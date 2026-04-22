@@ -7,6 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Carattere&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  input, textarea, select { outline: none !important; box-shadow: none !important; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+  input:required, textarea:required { box-shadow: none !important; outline: none !important; }
   body {
     font-family: 'Montserrat', sans-serif;
     background: #f9f6f0;
@@ -87,7 +89,7 @@
   .toggle-opt input:checked + label { background: #1a1410; border-color: #1a1410; color: #c8a97e; }
   .toggle-opt label:hover { border-color: #c8a97e; color: #9a7a50; }
 
-  .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.4rem; }
+  .check-grid { display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px; margin-top: 0.4rem; }
   .check-item { position: relative; }
   .check-item input[type="checkbox"], .check-item input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
   .check-item label { display: flex; align-items: center; gap: 8px; font-size: 14.0px; font-weight: 300; color: #7a6a54; cursor: pointer; padding: 7px 10px; border: 1px solid #e0d8cc; transition: all 0.2s; line-height: 1.4; }
@@ -130,139 +132,86 @@
   ══════════════════════════════ */
   @media (max-width: 768px) {
 
-    /* Hero section */
+    /* Hero */
     .hero {
-      padding: 2.5rem 1.5rem 3rem;
+      padding: 2.5rem 1.25rem 3rem;
       min-height: 100svh;
     }
-
-    .hero-names {
-      font-size: 42px !important;
-      word-spacing: 0.2em;
-    }
-
-    .hero-amp {
-      font-size: 32px !important;
-    }
-
-    .hero-label {
-      font-size: 12.0px;
-    }
-
-    .gold-line {
-      margin: 1rem auto;
-    }
-
-    .hero-date {
-      font-size: 12.0px;
-    }
-
-    .hero-lieu {
-      font-size: 17.0px;
-    }
+    .hero-label { font-size: 10px; letter-spacing: 0.2em; }
+    .hero-monogram svg { width: 70px; }
+    .hero-names { font-size: 38px !important; word-spacing: 0.15em; }
+    .hero-date { font-size: 10px; }
+    .hero-lieu { font-size: 14px; }
+    .gold-line { margin: 1rem auto; }
 
     /* Form section */
-    .form-section {
-      padding: 3rem 1rem 4rem;
-    }
+    .form-section { padding: 2.5rem 0 3rem; }
+    .section-title { font-size: 24px !important; }
+    .section-sub { font-size: 13px; padding: 0 1rem; }
 
-    .section-title {
-      font-size: 26px !important;
-    }
-
-    .section-sub {
-      font-size: 16.0px;
-    }
-
-    /* Form card */
+    /* Form card — pleine largeur */
     .form-card {
-      padding: 2rem 1.25rem;
+      padding: 2.5rem 1.25rem 2.5rem;
       margin: 0;
       border-radius: 0;
+      border-left: none;
+      border-right: none;
     }
+    .form-card::before { top: 8px; left: 8px; width: 14px; height: 14px; }
+    .form-card::after  { bottom: 8px; right: 8px; width: 14px; height: 14px; }
 
-    /* Presence toggle */
-    .presence-toggle {
-      flex-direction: column;
-      gap: 8px;
-    }
+    /* Labels */
+    .field-label { font-size: 10px; letter-spacing: 0.2em; }
 
-    .toggle-opt label {
-      padding: 14px;
-      font-size: 18.0px;
-    }
-
-    /* Dietary options */
-    .check-grid {
-      grid-template-columns: 1fr !important;
-      gap: 8px;
-    }
-
-    .check-item label {
-      font-size: 17.0px;
-      padding: 10px 12px;
-    }
-
-    /* Fields */
-    .field-label {
-      font-size: 12.0px;
-    }
-
+    /* Inputs - 16px minimum pour éviter zoom iOS */
     .field-input {
-      font-size: 19.0px; /* prevents zoom on iOS */
+      font-size: 16px !important;
+      padding: 12px 0;
+    }
+    .field-textarea { font-size: 16px !important; min-height: 100px; }
+    .autre-input { font-size: 16px !important; }
+
+    /* Présence — une option par ligne */
+    .presence-toggle { flex-direction: column; gap: 8px; }
+    .toggle-opt label {
+      padding: 15px;
+      font-size: 16px;
+      text-align: center;
     }
 
-    .field-textarea {
-      font-size: 19.0px; /* prevents zoom on iOS */
-      min-height: 100px;
+    /* Régime — une option par ligne */
+    .check-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px;
+    }
+    .check-item { width: 100%; }
+    .check-item label {
+      font-size: 15px;
+      padding: 12px 14px;
     }
 
-    .autre-input {
-      font-size: 19.0px;
-    }
-
-    /* Submit button */
-    .submit-btn {
-      padding: 18px;
-      font-size: 14.0px;
-    }
+    /* Bouton */
+    .submit-btn { padding: 18px; font-size: 12px; }
 
     /* Success */
-    .success-title {
-      font-size: 24px !important;
-    }
-
-    .success-text {
-      font-size: 17.0px;
-    }
+    .success-title { font-size: 26px !important; }
+    .success-text  { font-size: 14px; }
 
     /* Footer */
-    .footer {
-      padding: 2rem 1rem;
-    }
-
-    .footer-names {
-      font-size: 26px !important;
-    }
-
-    .footer-note {
-      font-size: 13.0px;
-    }
-
-    /* Corner ornaments - smaller on mobile */
-    .form-card::before { inset: 10px; }
-    .form-card::after  { inset: 15px; }
+    .footer { padding: 2rem 1rem; }
+    .footer-names { font-size: 28px !important; }
+    .footer-note  { font-size: 11px; }
   }
 
   @media (max-width: 400px) {
-    .hero-names {
-      font-size: 34px !important;
-    }
-
-    .form-card {
-      padding: 1.75rem 1rem;
-    }
+    .hero-names { font-size: 32px !important; }
+    .hero-monogram svg { width: 55px; }
+    .form-card { padding: 1.75rem 1rem 2rem; }
+    .toggle-opt label { font-size: 15px; }
+    .check-item label { font-size: 14px; }
   }
+
 </style>
 </head>
 <body>
@@ -328,7 +277,7 @@ Samuel et Sara
 
       <div class="field-group" id="diet-section">
         <label class="field-label">Régime alimentaire</label>
-        <div class="check-grid" style="grid-template-columns: 1fr 1fr 1fr; display:flex; flex-wrap:wrap; gap:8px;">
+        <div class="check-grid">
           <div class="check-item"><input type="radio" id="aucun" name="regime" value="Aucune restriction"/><label for="aucun">Aucune restriction</label></div>
           <div class="check-item"><input type="radio" id="vege" name="regime" value="Végétarien(ne)"/><label for="vege">Végétarien(ne)</label></div>
           <div class="check-item"><input type="radio" id="autre-regime" name="regime" value="Autre"/><label for="autre-regime">Autre</label></div>
@@ -404,25 +353,40 @@ Samuel et Sara
     if (regimes.includes('Autre') && autreText) { regimes.push('Autre: ' + autreText); regimes.splice(regimes.indexOf('Autre'), 1); }
     const message = document.querySelector('textarea[name="message"]').value;
 
+    const regime = document.querySelector("input[name='regime']:checked")?.value || 'Aucun';
+    const regimeFinal = (regime === 'Autre' && autreText) ? 'Autre: ' + autreText : regime;
+
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ nom, presence, regime_alimentaire: regimes.join(', ') || 'Aucun', message, _subject: `RSVP — ${nom} (${presence})` })
+        body: JSON.stringify({
+          access_key: '8fe3f798-db50-4b86-b5c8-3f97df804b21',
+          subject: `RSVP Mariage — ${nom} (${presence})`,
+          nom: nom,
+          presence: presence,
+          regime_alimentaire: regimeFinal,
+          message: message || '(aucun message)',
+          from_name: 'Site Mariage Samuel & Sara'
+        })
       });
-      if (res.ok) { 
+      const data = await res.json();
+      if (data.success) {
         document.getElementById('rsvp-form').style.display = 'none';
-        const presence = document.querySelector("input[name='presence']:checked")?.value;
         if (presence === 'Oui') {
           document.getElementById('success-oui').classList.add('visible');
         } else {
           document.getElementById('success-non').classList.add('visible');
         }
+      } else {
+        btn.textContent = 'Envoyer ma réponse';
+        btn.disabled = false;
+        alert('Une erreur est survenue. Veuillez réessayer.');
       }
-      else throw new Error();
     } catch {
-      document.getElementById('rsvp-form').style.display = 'none';
-      document.getElementById('success').classList.add('visible');
+      btn.textContent = 'Envoyer ma réponse';
+      btn.disabled = false;
+      alert('Une erreur est survenue. Veuillez réessayer.');
     }
   });
 </script>
