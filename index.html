@@ -212,12 +212,55 @@
     .check-item label { font-size: 14px; }
   }
 
+
+  /* ── HERO BORDER (same as invitation card) ── */
+  .hero-border-outer {
+    position: absolute;
+    inset: 18px;
+    border: 0.75px solid #c8a97e;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .hero-border-inner {
+    position: absolute;
+    inset: 24px;
+    border: 0.3px solid rgba(200,169,126,0.3);
+    pointer-events: none;
+    z-index: 5;
+  }
+  .hero-corner {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    z-index: 6;
+    pointer-events: none;
+  }
+  .hero-corner.tl { top: 12px; left: 12px; }
+  .hero-corner.tr { top: 12px; right: 12px; transform: scaleX(-1); }
+  .hero-corner.bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+  .hero-corner.br { bottom: 12px; right: 12px; transform: scale(-1); }
+
+  @media (max-width: 768px) {
+    .hero-border-outer { inset: 12px; }
+    .hero-border-inner { inset: 17px; }
+    .hero-corner { width: 18px; height: 18px; }
+    .hero-corner.tl { top: 8px; left: 8px; }
+    .hero-corner.tr { top: 8px; right: 8px; }
+    .hero-corner.bl { bottom: 8px; left: 8px; }
+    .hero-corner.br { bottom: 8px; right: 8px; }
+  }
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-border-outer"></div>
+  <div class="hero-border-inner"></div>
+  <svg class="hero-corner tl" viewBox="0 0 26 26" fill="none"><path d="M2 2 L2 18 M2 2 L18 2" stroke="#c8a97e" stroke-width="0.8"/><circle cx="2" cy="2" r="1.4" fill="#c8a97e"/></svg>
+  <svg class="hero-corner tr" viewBox="0 0 26 26" fill="none"><path d="M2 2 L2 18 M2 2 L18 2" stroke="#c8a97e" stroke-width="0.8"/><circle cx="2" cy="2" r="1.4" fill="#c8a97e"/></svg>
+  <svg class="hero-corner bl" viewBox="0 0 26 26" fill="none"><path d="M2 2 L2 18 M2 2 L18 2" stroke="#c8a97e" stroke-width="0.8"/><circle cx="2" cy="2" r="1.4" fill="#c8a97e"/></svg>
+  <svg class="hero-corner br" viewBox="0 0 26 26" fill="none"><path d="M2 2 L2 18 M2 2 L18 2" stroke="#c8a97e" stroke-width="0.8"/><circle cx="2" cy="2" r="1.4" fill="#c8a97e"/></svg>
   <p class="hero-label">Mariage — 27 Août 2026</p>
   <div class="hero-monogram">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 931">
